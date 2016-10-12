@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="shR-ZD-0Gy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="4s1-RJ-Kj3">
+            <objects>
+                <navigationController id="shR-ZD-0Gy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IHD-AB-ayL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Z8J-m4-jrQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xze-iP-KAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-761" y="36"/>
+        </scene>
+        <!--Main Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NavigationExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +34,96 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cAC-3I-18q">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVG-f8-Pyx">
+                                <state key="normal" title="Send Message to VC2"/>
+                                <connections>
+                                    <action selector="onSendMessageWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bvj-w7-pLe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message from VC2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwY-Of-LhY">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lVG-f8-Pyx" firstAttribute="top" secondItem="cAC-3I-18q" secondAttribute="bottom" constant="16" id="2Ba-aJ-Mni"/>
+                            <constraint firstItem="cAC-3I-18q" firstAttribute="top" secondItem="uwY-Of-LhY" secondAttribute="bottom" constant="15" id="490-CN-6Yf"/>
+                            <constraint firstItem="cAC-3I-18q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="32" id="NFe-l0-IuO"/>
+                            <constraint firstItem="cAC-3I-18q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VmG-xB-d7Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cAC-3I-18q" secondAttribute="trailing" constant="32" id="Zkg-X1-VxP"/>
+                            <constraint firstItem="uwY-Of-LhY" firstAttribute="centerX" secondItem="cAC-3I-18q" secondAttribute="centerX" id="azR-fU-Lph"/>
+                            <constraint firstItem="lVG-f8-Pyx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dZm-6w-z1s"/>
+                            <constraint firstItem="cAC-3I-18q" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="th3-Ew-2Z2"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Main Screen" id="Era-R8-cP6"/>
+                    <connections>
+                        <outlet property="messageTextField" destination="cAC-3I-18q" id="Rtj-06-qn5"/>
+                        <outlet property="receivedMessageLabel" destination="uwY-Of-LhY" id="Rp5-1Z-HET"/>
+                        <segue destination="ODj-DB-0g7" kind="show" identifier="SegueToSecondScreen" id="klC-IV-NXW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-14" y="36"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="bJv-ii-H3P">
+            <objects>
+                <viewController id="ODj-DB-0g7" customClass="SecondViewController" customModule="NavigationExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rBu-b5-xK1"/>
+                        <viewControllerLayoutGuide type="bottom" id="KXq-HZ-Lom"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="njb-e9-Y2G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mc-1P-OR2">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqB-jM-aqX">
+                                <state key="normal" title="Send Message to VC1"/>
+                                <connections>
+                                    <action selector="onSendMessageBackWithSender:" destination="ODj-DB-0g7" eventType="touchUpInside" id="WXd-Qj-JWn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message from VC1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eE7-Ve-316">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4mc-1P-OR2" firstAttribute="centerX" secondItem="eE7-Ve-316" secondAttribute="centerX" id="0oC-IV-cA3"/>
+                            <constraint firstItem="wqB-jM-aqX" firstAttribute="centerX" secondItem="njb-e9-Y2G" secondAttribute="centerX" id="5BF-u3-SlH"/>
+                            <constraint firstItem="4mc-1P-OR2" firstAttribute="centerY" secondItem="njb-e9-Y2G" secondAttribute="centerY" id="7sc-o5-eNu"/>
+                            <constraint firstItem="4mc-1P-OR2" firstAttribute="leading" secondItem="njb-e9-Y2G" secondAttribute="leadingMargin" constant="32" id="FCV-Dx-yzE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4mc-1P-OR2" secondAttribute="trailing" constant="32" id="J3U-2F-utf"/>
+                            <constraint firstItem="4mc-1P-OR2" firstAttribute="top" secondItem="eE7-Ve-316" secondAttribute="bottom" constant="15" id="hXt-X3-3iC"/>
+                            <constraint firstItem="wqB-jM-aqX" firstAttribute="top" secondItem="4mc-1P-OR2" secondAttribute="bottom" constant="16" id="keq-I8-GmQ"/>
+                            <constraint firstItem="4mc-1P-OR2" firstAttribute="centerX" secondItem="njb-e9-Y2G" secondAttribute="centerX" id="mPT-pC-AGl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="receivedMessageLabel" destination="eE7-Ve-316" id="wcd-rE-ZWC"/>
+                        <outlet property="returnMessageTextField" destination="4mc-1P-OR2" id="6Da-vn-nwW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wJB-gV-mmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861.60000000000002" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>

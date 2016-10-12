@@ -8,18 +8,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SecondViewControllerDelegate {
 
+    @IBOutlet var messageTextField : UITextField!
+    @IBOutlet var receivedMessageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @IBAction func onSendMessage(sender: AnyObject){
+        performSegue(withIdentifier: "SegueToSecondScreen", sender: self)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let secondViewControler = segue.destination as? SecondViewController{
+            secondViewControler.receivedMessage = messageTextField.text!
+            secondViewControler.delegate = self
+        }
     }
-
-
+    
+    func onDataReturned(_ returnMessage: String){
+        receivedMessageLabel.text = "Got message back \(returnMessage)"
+    }
 }
 
